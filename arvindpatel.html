@@ -1,0 +1,78 @@
+<!DOCTYPE html>     
+<html lang="en">    
+<head>  
+   <meta charset="UTF-8">    
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">  
+   <meta name="description" content="The best HTML webpage for Beginners">
+   <meta name="keywords" content="html,html cheatsheet,web development">
+   <link rel="shortcut icon" href="https://tse4.mm.bing.net/th?id=OIP.H_axj5zWsABmx1IeJozL-wHaHa&pid=Api&P=0" type="image/x-icon" > 
+   <link rel="stylesheet" href="style.css">
+   <title>MY PERSONAL PORTAL</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul type="circle"> 
+                <li><img id="menu" width="20px" height="20px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfwB_34syveiVRvKOrz5n3m_dEtK99GoLuZdVszmVzF0DgcOx_TLMNe1a1W1FH2ezAM3Q&usqp=CAU"></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <input type="search" placeholder="search here"> <a href="index.html"><img id="search" width="20px" height="20px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaO-KtMrTzRRPDbYRZu8dIs5Gl6cfYCEZ4kA&usqp=CAU"></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="menulist" onclick="openlist()">
+            <div><a href="index.html">Home</a></div>
+            <div><a href="#">About</a></div>
+            <div><a href="#">Contact</a></div>
+        </div>
+        <div class="toggle-box">
+            <label class="switch">
+            <input type="checkbox" onclick="darkandlight()">
+            <span class="slider round"></span>
+            </label>
+        </div>
+        <h2>
+            <pre id="wish">
+            </pre>
+        </h2>
+    </main>
+    <footer>
+        <center>
+            Copyright&copy;Arvindverat.com &#174;
+        </center>
+    </footer>
+</body>
+<script>
+var day = new Date();
+var hr = day.getHours();
+       if (hr >= 0 && hr < 12) {
+            var txt1 ="\t\tA VERY GOOD MORNING!";
+       } else if (hr == 12) {
+            var txt1 ="\t\tA VERY GOOD NOON!";
+        } else if (hr >= 12 && hr <= 17) {
+            var txt1 ="\t\tA VERY GOOD AFTERNOON!";
+        } else {
+            var txt1 ="\t\tA VERY GOOD EVENING!";
+        }
+       var i=0;
+       var txt = "\tHELLO!!!\n" + txt1 + "\n\t\tI ARVIND PATEL.....\n" + "\t\tWELCOME YOU TO MY PAGE !!!";
+       var speed=100;
+       (function typeWriter(){
+           if(i<txt.length){
+               document.getElementById("wish").innerHTML += txt.charAt(i);
+               i++;
+               setTimeout(typeWriter, speed);
+           }
+       }) ();
+       function darkandlight() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+       }
+       function openlist(){
+           document.body.onclick("list");
+       }
+</script>
+</html>

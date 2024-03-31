@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daily Notes</title>
+</head>
+<style>
+    body{
+        color: black;
+        background: url("https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg");
+    }
+    .header{
+        color: white;
+        background-color: black;
+        background-size: 20px,900px;
+        width: 525px;
+        height: 25px;
+        margin: 10px;
+        padding: 10px;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+    .menu li{
+        position: relative;
+        text-decoration: none;
+        word-spacing: 50px;
+        display: inline-block;
+        color: darkgrey;
+        left: 110px;
+        bottom: 45px;
+        
+    }
+    .search input{
+        height: 2.5em;
+        position: absolute;
+        left: 335px;
+        top: 16px; 
+    }
+    .search button{
+        width: 57px;
+        height: 2.5em;
+        position: absolute;
+        left: 510px;
+        top: 16px; 
+        background-color: black;
+        border: 2px solid darkgrey;
+        color: grey;
+    }
+    a{
+        text-decoration: none;
+        color: grey;
+    }
+    .container{
+        position: absolute;
+        left: 30px;
+        top: 50px;
+    }
+    .footer{
+        color: white;
+        background-color: black;
+        bottom: -380px;
+        clear: both;
+        position: absolute;
+        width: 525px;
+        text-align: center;
+</style>
+<header  id="header">
+    <div class="header">Daily Notes </div>
+        <ul class="menu">
+            <li><a href="#">HOME|</a></li>
+            <li><a href="#">ABOUT|</a></li>
+            <li><a href="#">HELP</a></li>
+        </ul>
+    <div class="search">    
+        <input type="search" name="search" id="search" placeholder="Search Notes" />
+        <button type="submit">Search</button>
+    </div>
+</header>
+<body>
+    <div class="container my-3">
+        <h1>Welcome To Magic Notes</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add a note</h5>
+                <div class="form-group">
+                    <textarea class="form-control" id="addTxt" rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary" id="addBtn">Add Note</button>
+            </div>
+        </div>
+        <hr>
+        <h2>Your Notes</h2>
+        <hr>
+        <div id="notes" class="row container-fluid"> </div>
+    </div>
+<script>
+let addBtn = document.getElementById("addBtn");
+addBtn.addEventListener("click", function(e) {
+  let addTxt = document.getElementById("addTxt");
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  notesObj.push(addTxt.value);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  addTxt.value = "";
+//   console.log(notesObj);
+  showNotes();
+});
+
+// Function to show elements from localStorage
+function showNotes() {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  let html = "";
+  notesObj.forEach(function(element, index) {
+    html += `
+            <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
+                    <div class="card-body" style="border:1px solid grey;margin:3px;">
+                        <h5 class="card-title">Note ${index + 1}</h5>
+                        <p class="card-text"> ${element}</p>
+                        <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
+                    </div>
+                    <footer class="footer">
+                        copy right &copy; Daily Notes
+                    </footer>
+                </div>`;
+  });
+  let notesElm = document.getElementById("notes");
+  if (notesObj.length != 0) {
+    notesElm.innerHTML = html;
+  } else {
+    notesElm.innerHTML = `Nothing to show! Use "Add a Note" section above to add notes.`;
+  }
+}
+
+// Function to delete a note
+function deleteNote(index) {
+//   console.log("I am deleting", index);
+
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+
+  notesObj.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  showNotes();
+}
+
+
+let search = document.getElementById('search');
+search.addEventListener("input", function(){
+
+    let inputVal = search.value.toLowerCase();
+    // console.log('Input event fired!', inputVal);
+    let noteCards = document.getElementsByClassName('noteCard');
+    Array.from(noteCards).forEach(function(element){
+        let cardTxt = element.getElementsByTagName("p")[0].innerText;
+        if(cardTxt.includes(inputVal)){
+            element.style.display = "block";
+        }
+        else{
+            element.style.display = "none";
+        }
+        // console.log(cardTxt);
+    })
+})
+</script>
+</body>
+</html>

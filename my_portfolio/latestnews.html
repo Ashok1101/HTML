@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FAKE NEWS DETECTION">
+    <meta name="keywords" content="FAKE OR REAL NEWS|LATEST OR OLD NEWS">
+    <link rel="shortcut icon" href="" type="image/x-icon" > 
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <title>FAKE NEWS DETECTION</title>
+    <py-env>
+        - pandas
+        - paths:
+          - C:/Users/Arvind/Downloads/news/news.csv
+        
+        $ python3 -m http.server
+        Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+    </py-env>
+    <style>
+        .card{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="newsAccordion" >
+    </div>
+
+<py-script>
+import pandas as pd
+from pyodide.http import open_url
+df = pd.read_csv(open_url("C:/Users/Arvind/Downloads/news/news.csv"))
+a=df[df.title=="Kerry to go to Paris in gesture of sympathy"]
+print(a.label)
+newsAccordion=Element('newsAccordion')
+newsAccordion.write(df.shape)
+</py-script>
+</body>
+</html>
+<script>
+// console.log("This is my index js file");
+
+// Initialize the news api parameters
+let source = 'the-times-of-india';
+let apiKey = '8b7f9fe063f74535acbc6a422d7716c7' //'pub_12366d92358e55b4e84d310e44c0a4a6b9e0c'
+
+// Grab the news container
+let newsAccordion = document.getElementById('newsAccordion');
+
+// Create an ajax get request
+const xhr = new XMLHttpRequest();
+xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=in&sortBy=top&apiKey=${apiKey}`, true);
+
+// What to do when response is ready
+xhr.onload = function () {
+    if (this.status === 200) {
+        let json = JSON.parse(this.responseText);
+        let articles = json.articles;
+        // console.log(articles);
+        let newsHtml = "";
+        articles.forEach(function(element, index) {
+            // console.log(element, index)
+            let news = `<div class="card">
+                            <div class="card-header" id="heading${index}">
+                                <h2 class="mb-0">
+                                <button class="btn">
+                                <b>Breaking News ${index+1}:</b> ${element["title"]}
+                                </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapse${index}">
+                                <div class="card-body"> ${element["content"]}. <a href="${element['url']}" target="_blank">Read more here</a> </div>
+                            </div>
+                        </div>`;
+            newsHtml += news;
+        });
+        newsAccordion.innerHTML = newsHtml;
+    }
+    else {
+        console.log("Some error occured")
+    }
+}
+
+xhr.send()
+</script>

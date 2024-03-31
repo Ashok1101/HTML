@@ -1,0 +1,162 @@
+<!DOCTYPE html>     <!--tells browser you are using html5-->
+<html lang="en">    <!--language = english-->
+<head>  <!-- MDN web docs:- for more attributes -->
+   <meta charset="UTF-8">    <!--meta tag content is used by SEO to rank website-->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">  <!--makes responsive-->
+   <meta name="description" content="The best HTML webpage for Beginners">
+   <meta name="keywords" content="html,html cheatsheet,web development">    <!--when such words user search than my website will be seen-->
+   <link rel="shortcut icon" href="https://tse4.mm.bing.net/th?id=OIP.H_axj5zWsABmx1IeJozL-wHaHa&pid=Api&P=0" type="image/x-icon" > 
+   <title>HTML Complete|Practise Page/Form</title>
+   <style>     /*internal CSS*/
+        p{
+            color:orange !important;   /*if we want to give more precedence*/
+        }
+        header{            /*inline css is given more preference than internal css*/
+            color:red;
+        }
+   </style>
+   <link rel="stylesheet" href="style.css">   <!--external css-->
+   <link rel="stylesheet" href="style1.css">
+</head>    
+<body>  <!--semantics tags:-1.header,2.main,3.footer-->
+<header style="color:blue;background-color:grey;"><u id="typing"></u><hr>   <!--inline CSS-->
+<nav><ul type="circle"> <!--bydefault disc-->
+     <li>Home</li>
+     <li>About</li>
+     <li>Contact</li>
+</ul></nav>
+</header> 
+<main>    <!--1.section,2.article,3.aside-->
+<div>
+    <div class="loading">&nbsp;</div>loading<span>...</span>
+</div>
+<section>
+<div>
+<h1>Hello World</h1>    <!--heading tag with no. increases the font size decreases-->
+<h2>Hello World</h2>    <!--actually head tag is used to decribe imps and not for font size-->   
+<h3>Hello World</h3>
+</div>
+<div>                  <!--div is an example of block element-->
+<h4>Hello World</h4>   <!--block elements:-<address><article><aside><blockquote><canvas><dd><div><dl><dt><fieldset><figcaption>-->
+<h5>Hello World</h5>    <!--<figure><footer><form><h1>-<h6><header><hr><li><main><nav><noscript><ol><p><pre><section>-->
+<h6>Hello World</h6>   <!--<table><tfoot><ul><video>...-->
+<table>
+    <caption>Toppers List:</caption>
+    <thead>
+        <tr>
+            <th id="sr">S.No.</th>
+            <th rowspan="2">Name</th>
+            <th colspan="2">Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1.</td>
+            <td>Aman</td>
+            <td>98%</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>Amit</td>
+            <td>97.55%</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<span>
+    I am a span tag   <!--span is example of inline element-->
+</span>                <!-- Inline elements:-<a><abbr><acronym><b><bdo><big><br><button><cite><code><dfn><em><i><img><input><kbd>-->
+</section>            <!--<label><map><object><output><q><samp><script><select><small><span><strong><sub><sup><textarea><time><tt><var>...-->
+<hr>                   <!--horizontal ruler-->
+<article>
+<p>
+    <b>this is                   <!--extra spaces and newlines are neglected-->
+    bold </b><i>this is italic</i>
+    <u>this is underline</u> <br> <strong>this is strong </strong>
+    log<sub>2</sub><sup>3</sup>  <!-- subscript and superscript-->
+    <big> using big </big><small> using small</small><em> emphasize</em>
+</p>
+<pre>
+    This is written       <!--extra spaces and newlines are printed as it is-->
+    using 
+    pre tag
+</pre>
+<p> This is a paragraph.</P>   <!--html is case insensitive-->
+<a class="abc" href="https://google.com">Google</a>   <!-- attribute can be written in double or single quotes -->
+<a class="abc" href="https://wikipedia.com" target="_blank">Wikipedia</a>   <!--opens in new window-->
+<img class="abc" src="https://tse2.mm.bing.net/th?id=OIP.ssZfUI8_yehzacZnKlhY0QHaEo&pid=Api&P=0&w=275&h=172" target="_main" alt="Image is here!" width="100px"> <!--bydefault main-->
+</article>
+<aside>Google Ads <img src="https://source.unsplash.com/100x50/?nature,waterfall" alt="random images"></aside>
+</main>
+<div>
+    <form class="form" action="action.php">
+        <label for="radio1">   <!--even if we click on text it gets selected-->
+            <input type="radio" value="section" id="radio1" required>select me 
+        </label><br>
+        <label>  
+            <input type="text" placeholder="fname mname lname" required>Enter your name <!--in place of text:password{...},email{@},etc-->
+        </label><br>
+        <label for="date">
+            Date: <input type="date" id="date"> 
+            rating: <input type="number" id="number"> <!--excepts nos and 'e' only-->
+        </label><br>
+        <label for="cb1">   
+            <input type="checkbox" value="section" id="cb1" checked>click me   <!--words under value is taken to backend and not the printed words-->
+        </label><br>
+        <textarea id="explain" cols="30" rows="10" placeholder="explain in detail!"></textarea><br>
+        <select name="car">
+            <option>--select--</option>
+            <option>Ertica</option>
+            <option>Alto</option>
+            <option>Swift</option>
+            <option>NOTA</option>
+        </select>
+        <button>click me</button>
+        <input type="reset" id="reset" value="Reset">
+        <input type="submit" name="submit" id="submit" value="Submit" />
+    </form>
+</div>
+<br>
+<div>
+    <iframe width="518" height="480" src="https://www.youtube.com/embed/BsDoLVMnmZs" title="HTML Tutorial For Beginners In Hindi (With Notes) 🔥" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br><video src="https://tse1.mm.bing.net/th?id=OIP.UlkAey5WVOnEiBzzDFaG4gHaEu&pid=Api&P=0">VIDEO</video>
+</div>
+<div class="div">      <!--html entities-->
+    <p>paragraph with spaces &nbsp;&nbsp;using "& nbsp;"</p> <!--&nbsp; = non breaking space-->
+    <p>paragraph is written using &lt;p&gt;</p> <!--to print <p>-->
+    <p>pound is written like this &pound;</p>
+    <p>copyright is written like this &copy;</p>
+    <p>empty character is written like this &#8203;</p> <!--used to get empty character-->
+</div>
+<details>
+    <summary>HTML Complete Course-</summary>
+    It contains html in detail.
+</details>
+<time>20:00</time><br> <!--so that compiler knows that it is time-->
+<div class="container">
+<div class="gridbox">item-1</div>
+<div class="gridbox">item-2</div>
+<div class="gridbox">item-3</div>
+</div>
+<div class="jadoo" id="jadoo1">U are using Mobile device!</div>
+<div class="jadoo" id="jadoo2">U are using Tablet device!</div>
+<div class="jadoo" id="jadoo3">U are using Laptop device!</div>
+<footer id="footer">
+    PRACTISE@HTML.2022<sup>&copy;</sup>
+</footer>
+</body>
+<!--<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>-->
+   <script>
+       var i=0;
+       var txt='HTML PRACTISE!!!|';
+       var speed=100;
+       (function typeWriter(){
+           if(i<txt.length){
+               document.getElementById("typing").innerHTML += txt.charAt(i);
+               i++;
+               setTimeout(typeWriter, speed);
+           }
+       }) ();
+   </script>
+</html>
